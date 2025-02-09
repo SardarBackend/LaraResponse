@@ -1,5 +1,5 @@
 {
-    "name": "SardarBackend/LaraResponse",
+    "name": "sardar-backend/lara-response",
     "description": "A Laravel package for API response handling",
     "type": "library",
     "require": {
