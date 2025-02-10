@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\Console\Commands;
+namespace SardarBackend\RestfulApiHelper\Console\Commands;
 
 use Illuminate\Console\Command;
 
