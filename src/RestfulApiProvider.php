@@ -17,13 +17,7 @@ class RestfulApiProvider extends ServiceProvider
         $this->app->bind('ApiResponseFacade', function(){
             return new AppendsBuilder ;
         });
-    }
 
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
         if ($this->app->runningInConsole()) {
 
             $this->commands([
@@ -32,5 +26,12 @@ class RestfulApiProvider extends ServiceProvider
             ]);
             
         }
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
     }
 }
