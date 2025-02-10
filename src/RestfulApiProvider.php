@@ -4,8 +4,8 @@ namespace SardarBackend\RestfulApiHelper;
 
 use Illuminate\Support\ServiceProvider;
 use SardarBackend\RestfulApi\AppendsBuilder;
-use SardarBackend\Console\Commands\ServiceModelCommand;
-use SardarBackend\Console\Commands\ApiRequestCommand;
+use SardarBackend\RestfulApiHelper\Console\Commands\ApiRequestCommand;
+use SardarBackend\RestfulApiHelper\Console\Commands\ServiceModelCommand;
 
 class RestfulApiProvider extends ServiceProvider
 {
