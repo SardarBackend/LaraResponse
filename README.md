@@ -15,7 +15,7 @@ A robust and customizable API response helper for Laravel applications, designed
 ## 📦 Installation
 Install the package via Composer:
 ```bash
-composer require sardarbackend/LaraResponse
+composer require sardar-backend/lara-response
 ```
 
 ## 🚀 Usage
