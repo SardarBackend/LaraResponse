@@ -11,6 +11,11 @@
             "SardarBackend\\RestfulApiHelper\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SardarBackend\\Console\\Commands\\": "src/Console/Commands/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
