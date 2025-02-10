@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\RestfulApiHelper;
+namespace SardarBackend;
 
 use Illuminate\Support\ServiceProvider;
 use SardarBackend\RestfulApi\AppendsBuilder;
