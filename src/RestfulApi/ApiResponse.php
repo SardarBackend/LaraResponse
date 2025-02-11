@@ -1,5 +1,5 @@
 <?php
-namespace SardarBackend\RestfulApi;
+namespace SardarBackend\RestfulApiHelper\RestfulApi;
 
 class ApiResponse
 {
