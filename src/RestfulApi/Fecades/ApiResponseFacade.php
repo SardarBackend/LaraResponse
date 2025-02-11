@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\RestfulApi\Fecades;
+namespace SardarBackend\RestfulApiHelper\RestfulApi\Fecades;
 use Illuminate\Support\Facades\Facade;
 
 class ApiResponseFacade extends Facade {
