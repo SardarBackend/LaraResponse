@@ -8,11 +8,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SardarBackend\\RestfulApiHelper\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
+            "SardarBackend\\RestfulApiHelper\\": "src/",
             "SardarBackend\\Console\\Commands\\": "src/Console/Commands/"
         }
     },
