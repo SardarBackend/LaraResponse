@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\RestfulApi;
+namespace SardarBackend\RestfulApiHelper\RestfulApi;
 
 /**
  * AppendsBuilder: A builder class for constructing ApiResponse objects.
