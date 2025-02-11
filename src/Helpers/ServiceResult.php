@@ -1,5 +1,5 @@
 <?php
-namespace SardarBackend\Helpers;
+namespace SardarBackend\RestfulApiHelper\Helpers;
 
 class ServiceResult
 {
