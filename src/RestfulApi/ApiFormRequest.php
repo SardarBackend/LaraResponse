@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\RestfulApi;
+namespace SardarBackend\RestfulApiHelper\RestfulApi;
 
 // use Illuminate\Auth\Events\Failed;
 use Illuminate\Foundation\Http\FormRequest;
