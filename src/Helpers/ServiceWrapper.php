@@ -1,6 +1,6 @@
 <?php
 
-namespace SardarBackend\Helpers;
+namespace SardarBackend\RestfulApiHelper\Helpers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\DB;
