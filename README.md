@@ -20,34 +20,55 @@ composer require sardar-backend/lara-response:dev-master
 
 ## 🚀 Usage
 
+
+### 1️⃣ Generate the Service Class  
+
+First, create a new service class using the following command:  
+
+```sh
+php artisan make:service ModelName
+```
+گگ
+گگ
+
+To properly inject `ProductServices` into your controller, use the constructor method:  
+
+```php
+public function __construct(private ProductServices $productServices) {
+}
+```
+
 ### Basic Example
 ```php
-use SardarBackend\RestfulApi\ApiResponse;
+use SardarBackend\RestfulApiHelper\RestfulApi\Fecades\ApiResponseFacade;
 
-return (new ApiResponse())
-    ->setMessage('User retrieved successfully')
-    ->setData(['id' => 1, 'name' => 'John Doe'])
-    ->setStatus(200)
-    ->response();
+$result = $this->productServices->getAll($request->all());
+
+if (!$result->ok) {
+    return ApiResponseFacade::withMessage($result->data)->withStatus(500)->build()->Response();
+}
+return ApiResponseFacade::withData(ApiProductListResource::collection($result->data)->resource)->build()->Response();
 ```
 
 ### Adding Additional Data
 ```php
-return (new ApiResponse())
-    ->setMessage('Order placed successfully')
-    ->setData(['order_id' => 12345])
-    ->setAppends(['processing_time' => '2 seconds'])
-    ->setStatus(201)
-    ->response();
+use SardarBackend\RestfulApiHelper\RestfulApi\Fecades\ApiResponseFacade;
+
+$result = $this->productServices->getAll($request->all());
+
+if (!$result->ok) {
+    return ApiResponseFacade::withMessage($result->data)->withStatus(500)->build()->Response();
+}
+return ApiResponseFacade::withData(ApiProductListResource::collection($result->data)->resource)->withAppends(['processing_time' => '2 seconds'])->build()->Response();
 ```
 
 ## 🛠 Methods
 | Method | Description |
 |--------|-------------|
-| `setMessage(string $message)` | Sets the response message |
-| `setData(mixed $data)` | Sets the response data |
-| `setStatus(int $status)` | Sets the HTTP status code |
-| `setAppends(array $appends)` | Adds additional key-value pairs to the response |
+| `withMessage(string $message)` | Sets the response message |
+| `withData(mixed $data)` | Sets the response data |
+| `withStatus(int $status)` | Sets the HTTP status code |
+| `withAppends(array $appends)` | Adds additional key-value pairs to the response |
 | `response()` | Returns a Laravel `JsonResponse` object |
 
 ## 📜 License
