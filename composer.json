@@ -1,0 +1,24 @@
+{
+    "name": "sardar-backend/lara-response",
+    "description": "A Laravel package for API response handling",
+    "type": "library",
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SardarBackend\\RestfulApiHelper\\": "src/",
+            "SardarBackend\\Console\\Commands\\": "src/Console/Commands/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SardarBackend\\RestfulApiHelper\\RestfulApiProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

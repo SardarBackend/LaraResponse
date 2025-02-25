@@ -1,0 +1,59 @@
+<?php
+
+namespace {{namespace}};
+use App\Base\ServiceResult;
+use App\Base\ServiceWrapper;
+use App\Models\{{class}};
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Support\Facades\Hash;
+use App\Models\activecode;
+
+class {{class}}Services
+{
+    public function getAll(array $inputs):ServiceResult
+    {
+        return app(ServiceWrapper::class)(function() use ($inputs){
+            return {{class}}::paginate(10);
+    });
+    }
+
+    public function getInfo({{class}} $user):ServiceResult
+    {
+        $user = {{class}}::find(id: $user);
+        return app(ServiceWrapper::class)(fn()=>$user);
+
+    }
+
+
+    public function register{{class}}(array $inputs):ServiceResult
+    {
+        return app(ServiceWrapper::class)(function() use($inputs){
+            // $inputs['password'] = Hash::make($inputs['password']);
+            ${{class}}={{class}}::create($inputs);
+            return ${{class}};
+        });
+
+}
+
+
+    public function Update{{class}}(array $inputs,int $user):ServiceResult
+    {
+        return app(ServiceWrapper::class)(function() use($inputs,$user){
+            // $inputs['password'] = Hash::make($inputs['password']);
+            ${{class}} = {{class}}::find( $user);
+            ${{class}}->update($inputs);
+            ${{class}} = ${{class}}->fresh();
+
+
+            return ${{class}};
+        });
+
+}
+
+public function Delete{{class}}(int $user):ServiceResult
+{
+    $user = {{class}}::find( $user);
+    return app(ServiceWrapper::class)(fn()=>$user->delete());
+
+}
+}
