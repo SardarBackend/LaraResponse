@@ -28,8 +28,6 @@ First, create a new service class using the following command:
 ```sh
 php artisan make:service ModelName
 ```
-گگ
-گگ
 
 To properly inject `ProductServices` into your controller, use the constructor method:  
 
