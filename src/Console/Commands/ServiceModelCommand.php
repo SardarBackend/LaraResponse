@@ -35,7 +35,7 @@ class ServiceModelCommand extends Command
 
         // Define the directory and file path
         $directory = app_path('Services');
-        $path = $directory . '/' . $name . 'Service.php';
+        $path = $directory . '/' . $name . 'Services.php';
 
         // Check if the directory exists, if not, create it
         if (!File::exists($directory)) {
