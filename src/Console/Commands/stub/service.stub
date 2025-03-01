@@ -6,6 +6,7 @@ use SardarBackend\RestfulApiHelper\Helpers\ServiceWrapper;
 use App\Models\{{class}};
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Collection;
 
 class {{class}}Services
 {
@@ -18,7 +19,7 @@ class {{class}}Services
 
     public function getInfo({{class}} $user):ServiceResult
     {
-        $user = {{class}}::find(id: $user);
+        $user = new Collection([ {{class}}::find(id: $user) ]);
         return app(ServiceWrapper::class)(fn()=>$user);
 
     }
