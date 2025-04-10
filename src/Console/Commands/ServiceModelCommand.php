@@ -58,7 +58,7 @@ class ServiceModelCommand extends Command
         File::put($path, $stub);
 
         // Output success message
-        $this->info("Service {$name}Service created successfully.");
+        $this->info("Service {$name}Services created successfully.");
     }
 
     protected function getStub()

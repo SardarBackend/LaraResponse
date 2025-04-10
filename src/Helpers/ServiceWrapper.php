@@ -40,10 +40,15 @@ class ServiceWrapper
             DB::rollBack();
 
             // Return a failed ServiceResult with the exception message
-            return new ServiceResult(false, $th->getMessage());
+            return new ServiceResult(false, [ 'message' => $th->getMessage()  ]);
         }
 
+        // Ensure $actionResult is not empty; initialize with an empty 'data' array if needed.
+
+        $actionResult= $actionResult->first()? $actionResult : collect(['data'=>[]]);
+
         // Return a successful ServiceResult with the action result
+
         return new ServiceResult(true, $actionResult);
     }
 }

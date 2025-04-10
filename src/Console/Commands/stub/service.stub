@@ -10,17 +10,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class {{class}}Services
 {
-    public function getAll(array $inputs):ServiceResult
+    public function getAll():ServiceResult
     {
-        return app(ServiceWrapper::class)(function() use ($inputs){
+        return app(ServiceWrapper::class)(function() {
             return {{class}}::paginate(10);
-    });
+        });
     }
 
-    public function getInfo({{class}} $user):ServiceResult
+    public function getInfo({{class}} $id):ServiceResult
     {
-        $user = new Collection([ {{class}}::find(id: $user) ]);
-        return app(ServiceWrapper::class)(fn()=>$user);
+
+        return app(ServiceWrapper::class)(function() {
+            return (new Collection([{{class}}::find($id)]));
+        });
 
     }
 
@@ -28,19 +30,17 @@ class {{class}}Services
     public function register{{class}}(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs){
-            // $inputs['password'] = Hash::make($inputs['password']);
             ${{class}}={{class}}::create($inputs);
             return ${{class}};
         });
 
-}
+    }
 
 
-    public function Update{{class}}(array $inputs,int $user):ServiceResult
+    public function Update{{class}}(array $inputs,int $id):ServiceResult
     {
-        return app(ServiceWrapper::class)(function() use($inputs,$user){
-            // $inputs['password'] = Hash::make($inputs['password']);
-            ${{class}} = {{class}}::find( $user);
+        return app(ServiceWrapper::class)(function() use($inputs,$id){
+            ${{class}} = {{class}}::find( $id);
             ${{class}}->update($inputs);
             ${{class}} = ${{class}}->fresh();
 
@@ -48,12 +48,14 @@ class {{class}}Services
             return ${{class}};
         });
 
-}
+    }
 
-public function Delete{{class}}(int $user):ServiceResult
-{
-    $user = {{class}}::find( $user);
-    return app(ServiceWrapper::class)(fn()=>$user->delete());
+    public function Delete{{class}}(int $id):ServiceResult
+    {
+        return app(ServiceWrapper::class)(function() {
+            return {{class}}::find($id)->delete();
+        });
 
-}
+    }
+
 }

@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\Api{{ name }}Request;
+use App\Http\Resources\{{ name }}Resource;
+use App\Services\{{ name }}Service;
+use SardarBackend\RestfulApiHelper\RestfulApi\Fecades\ApiResponseFacade;
+
+class Api{{ name }}Controller extends Controller
+{
+
+    public function __construct(private {{ name }}Services ${{ name }}Services) {}
+
+
+    public function index()
+    {
+        $result = $this->{{ name }}Services->getAll();
+        return ApiResponseFacade::withData({{ name }}ListResource::collection($result->data)->resource)->build()->Response($result->ok);
+    }
+
+    public function store{{ name }}(Api{{ name }}Request $request)
+    {
+        $result = $this->{{ name }}Services->register{{ name }}($request);
+        return ApiResponseFacade::withMessage(' {{ name }} created successfully')->build()->Response($result->ok);
+    }
+
+    public function show($id)
+    {
+        $result = $this->{{ name }}Services->getInfo($id);
+        return ApiResponseFacade::withData({{ name }}DetailsResource::collection($result->data)->resource)->build()->Response($result->ok);
+    }
+
+    public function update{{ name }}(Api{{ name }}Request $request, $id)
+    {
+        $result = $this->{{ name }}Services->Update{{ name }}($request , $id);
+        return ApiResponseFacade::withData({{ name }}ListResource::collection($result->data)->resource)->withMessage('{{ nameRequest }} updated successfully')->build()->Response($result->ok);
+    }
+
+    public function destroy($id)
+    {
+        $result = $this->{{ name }}Services->Delete{{ name }}($id);
+        return ApiResponseFacade::->withMessage('{{ name }} Deleted successfully')->build()->Response($result->ok);
+    }
+}

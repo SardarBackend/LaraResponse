@@ -4,8 +4,9 @@ namespace SardarBackend\RestfulApiHelper;
 
 use Illuminate\Support\ServiceProvider;
 use SardarBackend\RestfulApiHelper\RestfulApi\AppendsBuilder;
-use SardarBackend\RestfulApiHelper\Console\Commands\ApiRequestCommand;
+
 use SardarBackend\RestfulApiHelper\Console\Commands\ServiceModelCommand;
+use SardarBackend\RestfulApiHelper\Console\Commands\GeneralCommandMakeAPI;
 
 class RestfulApiProvider extends ServiceProvider
 {
@@ -21,8 +22,8 @@ class RestfulApiProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
 
             $this->commands([
-                ApiRequestCommand::class,
                 ServiceModelCommand::class,
+                GeneralCommandMakeAPI::class
             ]);
 
         }

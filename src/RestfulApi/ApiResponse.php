@@ -68,18 +68,36 @@ class ApiResponse
      *
      * @return \Illuminate\Http\JsonResponse A JSON response containing the message, data, and additional appends.
      */
-    public function response()
+    public function response($status)
     {
         $body = [];
 
+        // Set default status response
+
         // Add message to the response if it's not null
-        !is_null($this->message) && $body['message'] = $this->message;
+        if (!is_null($this->message)) {
+            $body['message'] = $this->message;
+        }
 
         // Add data to the response if it's not null
-        !is_null($this->data) && $body['data'] = $this->data;
+        if (!is_null($this->data)) {
+            $body['data'] = $this->data;
+        }
 
         // Merge additional appends with the response body
-        $body = $body + $this->appends;
+        $body = array_merge($body, $this->appends);
+
+        // Modify response for error status
+        if (!$status) {
+            $body['message'] = $this->data->first()->resource ?? 'An error occurred';
+            unset($body['data']);
+            return response()->json($body, 500);
+        }
+        if(!$body['data']->first()->resource){
+            $body['message'] = 'object not found';
+            unset($body['data']);
+            return response()->json($body, 404);
+        };
 
         // Return the response with the specified HTTP status
         return response()->json($body, $this->status);
